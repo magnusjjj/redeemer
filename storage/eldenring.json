@@ -1,0 +1,8 @@
+{
+	"name": "Elden Ring",
+	"redeems": [{
+		"name": "Set health to 20"
+		"type": "actionlist",
+		"data": { }
+	}],
+}
