@@ -39,23 +39,25 @@ export class RedeemFile {
 
 export class RedeemManager {
     static storageroot:string = "./storage/redeems/";
-    static async list():Promise<RedeemFile[]>{
+    static list():Array<RedeemFile>{
         try {
-            let files:string[] = await fs.promises.readdir(this.storageroot);
+            let files:Array<string> = fs.readdirSync(this.storageroot);
             console.log("Done loading directory");
             let redeems:Array<RedeemFile> = new Array<RedeemFile>();
 
             if(files.length == 0){
                 this.save(new RedeemFile());
-                files = await fs.promises.readdir(this.storageroot);
+                files.push(new RedeemFile().getFilename());
             }
 
-            for(const thefile in files){
-                let newredeem_raw:string = (await fs.promises.readFile(this.storageroot+thefile)).toString("utf-8");
+            for(let thefile in files){
+                console.log(thefile);
+                /*let buffer:Buffer = fs.readFileSync(this.storageroot+thefile)
+                let newredeem_raw:string = buffer.toString("utf-8");
                 let newredeem_obj:object = JSON.parse(newredeem_raw);
                 let newredeem:RedeemFile = new RedeemFile();
                 Object.assign(newredeem, newredeem_obj);
-                redeems.push(newredeem);
+                redeems.push(newredeem);*/
             }
             console.log("Pushing redeems" , redeems);
             return redeems;
@@ -67,7 +69,6 @@ export class RedeemManager {
                 throw Error("Error: " + err.toString());
             }
         }
-        return new Array<RedeemFile>(); // Just shuts up no return error
     }
     
     static async save(redeem:RedeemFile){

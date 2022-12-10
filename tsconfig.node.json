@@ -6,6 +6,7 @@
     "moduleResolution": "Node",
     "jsx": "preserve",
     "resolveJsonModule": true,
+    "sourceMap": true,
     "allowSyntheticDefaultImports": true
   },
   "include": ["package.json", "electron"]

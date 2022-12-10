@@ -10,18 +10,12 @@ import { listenerCount } from 'process';
                 error: "",
             }; 
         },
-        async created() {
-            await this.getRedeemFiles();
+        created() {
+            this.getRedeemFiles();
         },
         methods:{
-            async getRedeemFiles(){
-                try {
-                    this.redeemfiles = await RedeemManager.list();
-                    console.log("Done with redeemfiles!");
-                } catch(err:any) {
-                    console.log("In getredeemfile, outer error", err);
-                    this.error = err.toString();
-                }
+            getRedeemFiles(){
+               this.redeemfiles = RedeemManager.list();
             }
         }
     }
