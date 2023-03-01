@@ -16,7 +16,7 @@
   "devDependencies": {
     "@types/jquery": "^3.5.14",
     "@vitejs/plugin-vue": "^3.1.2",
-    "electron": "^22.0.0",
+    "electron": "^23.1.1",
     "electron-builder": "^23.3.3",
     "typescript": "^4.8.4",
     "vite": "^3.2.2",
